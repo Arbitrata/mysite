@@ -1,55 +1,77 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BiMenu, BiX } from "react-icons/bi";
-import { NavLink } from "react-router-dom";
 import Button from "./Button";
+import { handleScroll } from "./ScrollToTop";
+import { Link } from "react-router-dom";
 
-const Navbar = ({}) => {
+const Navbar = (props) => {
   const links = [
     {
       to: "/",
     },
     {
       to: "about",
-      label: "About",
+      position: "end",
+      label: "Introduction",
     },
     {
-      to: "work",
-      label: "Work",
+      to: "mywork",
+      position: "start",
+      label: "Worked Projects",
     },
     {
-      to: "projects",
-      label: "Projects",
+      to: "startUp",
+      position: "nearest",
+      label: "StartUp Projects",
     },
   ];
 
   const [open, setOpen] = useState(false);
+  const { renderText, setActiveText, setActiveForm } = props;
 
-  const activeLink =
-    "text-[14.22px] text-blue md:font-medium font-bold cursor-pointer";
   return (
-    <nav className="h-[105px] justify-between px-[94px] fixed top-0 bg-darkblue w-full z-50 items-center flex">
+    <nav className="lg:h-[105px] h-[70px] justify-between lg:px-[94px] lg:fixed top-0 bg-white lg:w-full w-screen z-50 items-center flex">
       <div className="w-fit h-full grid place-content-center">
-        <img src="lg.jpg" className="h-[80px]" />
+        <img src="andy-logo.png" className="lg:h-[90px] lg:pl-0 pl-4 h-[50px]" />
       </div>
       <ul
-        className={`md:flex place-content-center transition-all duration-200 md:static absolute lg:justify-end items-center ${
+        className={`lg:flex block lg:gap-y-0 gap-y-4 lg:pb-0 pb-10 lg:w-auto w-[100%] place-content-center transition-all duration-300 lg:static absolute lg:justify-end items-center ${
           open
-            ? "top-[90.89px] right-[33px] lg:py-0 py-4"
-            : "right-[-400px] md:opacity-100 top-[90.89px]"
+            ? "top-[70px] bg-white text-greenblue z-50 rounded-b-md grid place-content-center lg:py-0"
+            : " -top-[400px] rounded-b-md grid place-content-center"
         }`}
       >
         {links.map((link) => (
-          <li key={link.to} className="text-left font-poppins px-6 md:mt-0 mt-3">
-            <Button link={true} text={link.label} styling={"text-lightgray hover:text-greenblue"} />
+          <li
+            key={link.to}
+            onClick={() => setOpen(false)}
+            className={`text-left font-poppins px-6 md:mt-0 mt-3
+            `}
+          >
+            <Button
+              link={true}
+              onClick={() => handleScroll(link.to, link.position, 100)}
+              text={link.label}
+              styling={"text-darkblue hover:text-blue"}
+            />
           </li>
         ))}
-         <li className=" w-[200px] sm:pl-4 h-full grid place-content-center">
-        <Button button={true} text={"Say hello"} />
-      </li>
+        <li className="lg:w-[200px] h-full grid place-content-center">
+          <Link to={"contact"}>
+            <Button
+              button={true}
+              onClick={() =>
+                renderText("sayHello", setActiveText, setActiveForm)
+              }
+              text={"Say hello"}
+              styling={"bg-darkblue"}
+            />
+          </Link>
+        </li>
       </ul>
       <button
         onClick={() => setOpen(!open)}
-        className="md:hidden visible md:pl-0 pl-4 text-green"
+        className="md:hidden visible lg:pr-0 pr-4 text-greenblue"
       >
         {open ? <BiX size={30} /> : <BiMenu size={35} />}
       </button>

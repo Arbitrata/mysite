@@ -17,5 +17,7 @@ export default {
       darkblue: "#0a2753",
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-dotted-background'),
+  ],
 };

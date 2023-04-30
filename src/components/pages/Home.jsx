@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../common/Button";
 import { Cards } from "../common/Cards";
+import { Slide, Fade } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
 import { BiLaptop, BiMessage } from "react-icons/bi";
+import { handleScroll } from "../common/ScrollToTop";
+import Navbar from "../common/Navbar";
+import { Link } from "react-router-dom";
+import { GoProject } from "react-icons/go";
+import { GiBrainstorm } from "react-icons/gi";
 
 export const Hero = () => {
   return (
-    <div className="h-fit pb-[118px] px-[94px] w-full pt-[100px]">
-      <div className="text-[60px] text-darkblue font-poppins capitalize mt-[48px]">
+    <div
+      id="home"
+      className="h-fit pb-[118px] lg:px-[94px] px-4 w-full lg:pt-[100px] pt-[100px] relative overflow-hidden"
+    >
+      <div className="lg:text-[60px] text-[30px] text-darkblue font-poppins capitalize lg:mt-[48px]">
         <h1>Andrew Mbugua.</h1>
         <h1>I build things for the web.</h1>
       </div>
-      <p className="w-[820px] text-[22px] mt-2 font-poppins">
+      <p className="lg:w-[820px] w-[100%] lg:text-[22px] text-md mt-2 font-poppins">
         I’m a software engineer specializing in building (and occasionally
         designing) exceptional digital experiences. Currently, I’m focused on
         building accessible, human-centered products at Apprentice
@@ -19,8 +29,11 @@ export const Hero = () => {
       <div className="w-fit h-fit mt-10">
         <Button
           button={true}
+          onClick={() => handleScroll("mywork", "start")}
           text={"Checkout My Work"}
-          styling={"h-[68px] w-[243px]"}
+          styling={
+            "lg:h-[68px] lg:w-[243px] lg:static absolute right-4 bg-darkblue "
+          }
         />
       </div>
     </div>
@@ -60,8 +73,8 @@ export const Services = () => {
     "Jira",
   ];
   return (
-    <div className="w-full relative h-[800px] grid place-items-center pb-[200px]">
-      <div className="grid lg:grid-cols-3 h-fit w-fit gap-1 place-items-center absolute -top-[130px]">
+    <div className="w-full relative lg:h-[800px] grid place-items-center lg:pb-[200px]">
+      <div className="grid lg:grid-cols-3 lg:px-0 px-4 h-fit w-fit gap-1 place-items-center lg:absolute relative -top-[130px]">
         <Cards
           services={true}
           icon={<BiLaptop size={60} />}
@@ -74,12 +87,13 @@ export const Services = () => {
           children={
             <>
               {frontendSkills.map((skill) => (
-                <li className="py-2 text-[16px] font-poppins">{skill} </li>
+                <li key={skill} className="py-2 text-[16px] font-poppins">
+                  {skill}
+                </li>
               ))}
             </>
           }
         />
-
         <Cards
           services={true}
           icon={<BiLaptop size={60} />}
@@ -92,7 +106,9 @@ export const Services = () => {
           children={
             <>
               {backendSkills.map((skill) => (
-                <li className="py-2 text-[16px] font-poppins">{skill} </li>
+                <li key={skill} className="py-2 text-[16px] font-poppins">
+                  {skill}
+                </li>
               ))}
             </>
           }
@@ -110,7 +126,9 @@ export const Services = () => {
           children={
             <>
               {otherSkills.map((skill) => (
-                <li className="py-2 text-[16px] font-poppins">{skill} </li>
+                <li key={skill} className="py-2 text-[16px] font-poppins">
+                  {skill}
+                </li>
               ))}
             </>
           }
@@ -122,13 +140,16 @@ export const Services = () => {
 
 export const About = () => {
   return (
-    <div className="h-fit w-full">
-      <div className="z-10 bg-darkblu text-center bg-darkblue text-lightgray px-[94px] h-[469px]">
-        <h1 className="text-[29px] font-poppins pt-[29px]">
+    <div className="h-fit lg:static relative w-full">
+      <div
+        id="about"
+        className="z-10 text-center bg-darkblue text-lightgray lg:px-[94px] px-4 lg:h-[500px] h-[600px]"
+      >
+        <h1 className="text-[29px] font-poppins pt-[50px]">
           Hi, I’m Andrew. Nice to meet you.
         </h1>
         <div className="w-full h-fit grid place-content-center">
-          <p className="text-[18px] text-center font-poppins mt-[18px] w-[768.31px]">
+          <p className="text-[18px] text-center font-poppins mt-[18px] lg:w-[768.31px] w-auto">
             Since beginning my journey as a freelance designer over 11 years
             ago, I've done remote work for agencies, consulted for startups, and
             collaborated with talented people to create digital products for
@@ -144,53 +165,37 @@ export const About = () => {
 };
 
 export const MyWork = () => {
+  const myProjects = [
+    { description: "", image: "ujenzi.png" },
+    // { description: "", image: "stawi.png" },
+    // { description: "", image: "agency.png" },
+    // { description: "", image: "agency.png" },
+  ];
+
   return (
-    <div className="w-full h-fit py-10">
-      <div className="h-fit w-full font-poppins text-center py-12">
-        <h1 className="font-bold text-darkblue text-[23px]">My Recent Work</h1>
-        <h1 className="text-black">
+    <div
+      id="mywork"
+      className="w-full lg:h-fit h-fit lg:bg-none lg:bottom-0 lg:px-0 lg:py-10"
+    >
+      <div className="h-fit w-full font-poppins text-center py-6">
+        <h1 className="font-poppins text-darkblue text-[23px]">
+          My Recent Work
+        </h1>
+        <h1 className="text-black lg:px-0 px-4">
           Here are a few past design projects I've worked on. Want to see more?
           <a href="" className="text-blue hover:underline font-semibold">
             Email me.
           </a>
         </h1>
       </div>
-      <div className="grid lg:grid-cols-3 gap-6 h-fit w-full place-items-center px-[10%] py-10">
-        <Cards
-          project={true}
-          styling={"bg-darkblue opacity-70 hover:opacity-90"}
-          description={
-            "Accounting and tax services characterized by quality, reliability and trust."
-          }
-        />
-        <Cards
-          project={true}
-          styling={"bg-darkblue opacity-70 hover:opacity-90"}
-          description={
-            "Accounting and tax services characterized by quality, reliability and trust."
-          }
-        />
-        <Cards
-          project={true}
-          styling={"bg-darkblue opacity-70 hover:opacity-90"}
-          description={
-            "Accounting and tax services characterized by quality, reliability and trust."
-          }
-        />
-        <Cards
-          project={true}
-          styling={"bg-darkblue opacity-70 hover:opacity-90"}
-          description={
-            "Accounting and tax services characterized by quality, reliability and trust."
-          }
-        />
-        <Cards
-          project={true}
-          styling={"bg-darkblue opacity-70 hover:opacity-90"}
-          description={
-            "Accounting and tax services characterized by quality, reliability and trust."
-          }
-        />
+      <div className="lg:grid grid-cols-3 gap-6 h-fit w-full lg:static relative lg:place-items-center lg:px-[10%] px-4 lg:py-[50px] py-10">
+        {myProjects.map((project) => (
+          <Cards
+            project={true}
+            description={project.description}
+            image={project.image}
+          />
+        ))}
       </div>
     </div>
   );
@@ -225,13 +230,37 @@ export const Partner = () => {
   );
 };
 
-export const Project = () => {
+export const ProjectCard = () => {
+
+  const startUpsProjects = [
+    {
+      name: "Ujenzi platform",
+      description : "Since beginning my journey as a freelance designer over 11 years ago, I've done remote work for agencies, consulted for startups,and",
+      logo: "",
+
+    },
+    {
+      name: "Ujenzi platform",
+      description : "Since beginning my journey as a freelance designer over 11 years ago, I've done remote work for agencies, consulted for startups,and",
+      logo: "",
+      
+    },
+    {
+      name: "Ujenzi platform",
+      description : "Since beginning my journey as a freelance designer over 11 years ago, I've done remote work for agencies, consulted for startups,and",
+      logo: "",
+      
+    },
+  ]
+
   return (
-    <div className="w-full relative h-fit mb-11 grid place-items-center pb-[200px]">
-      <div className="grid lg:grid-cols-3 h-fit w-fit gap-1 place-items-center absolute -top-[130px]">
-        <Cards startUp={true} />
-        <Cards startUp={true} />
-        <Cards startUp={true} />
+    <div className="w-full relative lg:h-fit h-[2000px] mb-11 grid grid-rows-4 place-items-center pb-[400px] lg:pb-[200px]">
+      <div className="grid lg:grid-cols-3 h-fit w-fit gap-6 lg:px-0 px-4 place-items-center absolute -top-[130px]">
+{
+  startUpsProjects.map(startUpProject => (
+    <Cards startUp={true} name={startUpProject.name} description={startUpProject.description} />
+  ))
+}
       </div>
     </div>
   );
@@ -239,11 +268,16 @@ export const Project = () => {
 
 export const Projects = () => {
   return (
-    <div className="h-fit w-full mt-10 py-10">
-      <div className="z-10 bg-darkblu text-center bg-darkblue text-lightgray px-[94px] h-[469px]">
-        <h1 className="text-[29px] font-bold pt-[49px]">My Startup Projects</h1>
+    <div className="lg:h-fit h-[1500px] lg:static relative w-full mt-10 py-10">
+      <div
+        id="startUp"
+        className="z-10 text-center bg-darkblue text-lightgray lg:px-[94px] px-4 lg:h-[469px] h-[550px]"
+      >
+        <h1 className="text-[29px] font-poppins pt-[49px]">
+          My Startup Projects
+        </h1>
         <div className="w-full h-fit grid place-content-center">
-          <p className="text-[18px] text-center font-normal mt-[17px] w-[768.31px]">
+          <p className="text-[18px] text-center font-normal mt-[17px] lg:w-[768.31px]">
             I'm a bit of a digital product junky. Over the years, I've used
             hundreds of web and mobile apps in different industries and
             verticals. Eventually, I decided that it would be a fun challenge to
@@ -251,32 +285,38 @@ export const Projects = () => {
           </p>
         </div>
       </div>
-      <Project />
+      <ProjectCard />
     </div>
   );
 };
 
-export const CallToAction = () => {
+export const CallToAction = (props) => {
+  const { renderText, setActiveForm, setActiveText } = props;
   return (
-    <div className="W-full h-[400px] px-[10%] relative grid place-content-cente">
-      <div className="w-[500px] z-0 -left-[250px] bottom-0 h-[300px] skew-x-6 bg-gradient-to-tr to-lightgray from-darkblue absolute rounded-full"></div>
+    <div className="w-full h-[400px] lg:px-[10%] px-4 relative lg:bottom-0 grid place-content-cente">
+      <div className="lg:w-[500px] w-[200px] z-0 lg:-left-[250px] -left-[170px] bottom-0 h-[300px] skew-x-6 bg-gradient-to-tr to-lightgray from-darkblue absolute rounded-full"></div>
       <div className="py-8 px-4 z-20 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
         <div className="mx-auto max-w-screen-sm text-center">
-          <h2 className="mb-4 text-[23px] tracking-tight font-bold mt-8 leading-tight text-darkblue dark:text-white">
+          <h2 className="mb-4 text-[23px] tracking-tight font-poppins mt-8 leading-tight text-darkblue dark:text-white">
             Interested in collaborating with me?
           </h2>
           <p className="my-[25px] font-poppins text-[18px] ">
             I’m always open to discussing product design work or partnership
             opportunities.
           </p>
-          <Button
-            link={true}
-            icon={<BiMessage size={30} />}
-            styling={
-              "text-greenblue border hover:bg-blue border-greenblue bg-darkblue py-2 px-4 rounded-full"
-            }
-            text={"Start a Conversation"}
-          />
+          <Link to={"contact"}>
+            <Button
+              link={true}
+              onClick={() =>
+                renderText("discussStartup", setActiveText, setActiveForm)
+              }
+              icon={<GiBrainstorm size={30} />}
+              styling={
+                "text-greenblue border hover:bg-greenblue hover:text-darkblue  border-greenblue bg-darkblue py-2 px-4 rounded-full"
+              }
+              text={"Brainstorm startup concept"}
+            />
+          </Link>
         </div>
       </div>
     </div>
@@ -284,24 +324,63 @@ export const CallToAction = () => {
 };
 
 export const Testinoinials = () => {
+  const slideshow = [
+    {
+      name: "Josephine Wairimu",
+      title: "Product designer",
+      image:
+        "https://media.licdn.com/dms/image/C4E03AQFiP9my7PDd6g/profile-displayphoto-shrink_200_200/0/1650316273970?e=1687996800&v=beta&t=75NA77VCt_e-v0d1dpyEhTmpYakKkKqA1Gvd1KbfLQc",
+      text: "I have been working with Andrew since January 2022 in an apprenticeship program and his expertise and professionalism are evident throughout the development cycle, and am all the team members are very pleased with the final product that he produced. He has shown enormous skill and vast domain knowledge and his software development expertise is reliable and trustworthy. I would recommend Andrew to anyone looking for quality Software development services, delivered in a professional manner.",
+    },
+    {
+      name: "Alex Mwangi",
+      title: "Product designer",
+      image:
+        "https://media.licdn.com/dms/image/D4D03AQHxauh2UgkiRw/profile-displayphoto-shrink_200_200/0/1666429101465?e=1687996800&v=beta&t=EC7aOcPhsvInqR0A-AL8jLf58PMD0MpD7IrUPOxG3og",
+      text: "I had a chance to interact and work with andrew at Apprentice Cloud with Andrew who is a self motivated and result driven individual who is committed to delivering the best results.",
+    },
+    {
+      name: "Timothy munene",
+      title: "Software Developer",
+      image:
+        "https://media.licdn.com/dms/image/C4D03AQFr-SHfP6b2ng/profile-displayphoto-shrink_800_800/0/1650641966669?e=1687996800&v=beta&t=L9IrMABdyzXL_v2C6UyIyXs-XQ466nt_MjcNn7ys96U",
+      text: "I've known Andrew for almost a year and have found him to be hardworking, goal-oriented, tenacious, and an achiever. I believe that his academic credentials and technical skills will be extremely valuable to you as a client and to your company.",
+    },
+  ];
+
   return (
-    <div className="w-full h-[650px] overflow-hidden relative">
+    <div className="w-full lg:h-[650px] h-fit lg:pb-0 pb-[100px] overflow-hidden relative">
       <div className="w-full h-fit grid place-content-center text-center py-[30px] gap-y-4">
         <h1 className="text-[27px] font-poppins">Testimonials</h1>
         <p className="text-[22px] font-poppins">
           People I've worked with have said some nice things...
         </p>
       </div>
-      <div className="w-[400px] z-0 -right-[250px] bottom-0 h-[200px] skew-x-6 bg-gradient-to-tr to-lightgray from-darkblue absolute rounded-full"></div>
-      <Cards testimonial={true} />
+
+      <div className="lg:w-[500px] w-[200px] z-0 lg:-right-[350px] -right-[170px] bottom-0 h-[300px] lg:skew-x-12 skew-x-6 bg-gradient-to-tr to-lightgray from-darkblue absolute rounded-full"></div>
+
+      <div className="lg:mx-[6%]">
+        <Fade>
+          {slideshow.map((testimonial) => (
+            <Cards
+              image={testimonial.image}
+              testimonial={true}
+              title={testimonial.title}
+              name={testimonial.name}
+              description={testimonial.text}
+            />
+          ))}
+        </Fade>
+      </div>
     </div>
   );
 };
 
-export const LastSection = () => {
+export const LastSection = (props) => {
+  const { setActiveForm, setActiveText, renderText } = props;
   return (
-    <div className="w-full relative h-[150px] px-[10%]">
-      <div className="w-[1084px] grid grid-cols-4 justify-center  absolute -bottom-20 h-[166px] rounded-[12px] bg-black/90">
+    <div className="w-full relative lg:h-[150px] lg:pb-0 pb-10 lg:mt-0 mt-[100px] h-auto lg:px-[10%] px-4">
+      <div className="lg:w-[1084px] grid lg:grid-cols-4 grid-cols-1 justify-center lg:absolute -bottom-20 lg:h-[166px] h-[400px] rounded-[12px] bg-black">
         <div className="text-[30px] text-lightgray font-poppins h-full items-center w-full grid place-content-center text-center col-span-1">
           Start a project
         </div>
@@ -310,32 +389,53 @@ export const LastSection = () => {
           I’ll buy the coffee.
         </div>
         <div className="text-[30px] h-full items-center w-full grid place-content-center  col-span-1">
-          <Button
-            link={true}
-            icon={<BiMessage size={25} />}
-            styling={
-              "text-greenblue border hover:bg-blue border-greenblue bg-darkblue py-2 px-4 rounded-full"
-            }
-            text={"Let's do this, huh!"}
-          />
+          <Link to={"contact"}>
+            <Button
+              link={true}
+              icon={<GoProject size={25} />}
+              onClick={() =>
+                renderText("startProject", setActiveText, setActiveForm)
+              }
+              styling={
+                "text-greenblue hover:bg-greenblue hover:text-darkblue border hover:bg-greenblue hover:text-darkblue  border-greenblue bg-darkblue py-2 px-4 rounded-full"
+              }
+              text={"Initiate an endeavor"}
+            />
+          </Link>
         </div>
       </div>
     </div>
   );
 };
 
-export const Home = () => {
+export const Home = (props) => {
+  const { renderText, setActiveText, setActiveForm } = props;
+
   return (
-    <div>
-      <Hero />
-      <About />
-      <MyWork />
-      {/* <Partner /> */}
-      <Projects />
-      <CallToAction />
-      <hr className=" bg-greenblue h-[1px] border-0" />
-      <Testinoinials />
-      <LastSection />
-    </div>
+    <>
+      <Navbar
+        renderText={renderText}
+        setActiveText={setActiveText}
+        setActiveForm={setActiveForm}
+      />
+      <div className="block">
+        <Hero />
+        <About />
+        <MyWork />
+        <Projects />
+        <CallToAction
+          setActiveForm={setActiveForm}
+          setActiveText={setActiveText}
+          renderText={renderText}
+        />
+        <hr className=" bg-greenblue h-[1px] border-0" />
+        <Testinoinials />
+        <LastSection
+          setActiveForm={setActiveForm}
+          setActiveText={setActiveText}
+          renderText={renderText}
+        />
+      </div>
+    </>
   );
 };

@@ -1,5 +1,12 @@
 import React from "react";
-import { BiArrowToRight, BiBulb, BiCode, BiDockLeft } from "react-icons/bi";
+import {
+  BiArrowToRight,
+  BiBulb,
+  BiCode,
+  BiDockLeft,
+  BiHeart,
+} from "react-icons/bi";
+import { FaQuoteLeft } from "react-icons/fa";
 import Button from "./Button";
 
 export const Cards = ({
@@ -9,6 +16,8 @@ export const Cards = ({
   title,
   description,
   testimonial,
+  name,
+  image,
   like,
   to,
   icon,
@@ -20,22 +29,22 @@ export const Cards = ({
   return (
     <div>
       {services && (
-        <div className="w-[360px] h-[817px] py-[25px] px-2 text-center hover:shadow-darkblue hover:shadow-sm bg-lightgray rounded-[6px]">
+        <div className="lg:w-[380px] w-[100%] h-[817px] py-[25px] px-2 text-center hover:shadow-darkblue hover:shadow-sm bg-lightgray rounded-[6px]">
           <div className="w-full grid place-content-center mb-6">
             <div className="rounded-full bg-greenblue shadow w-[100px] h-[100px] grid place-content-center text-darkblue">
               {icon}
             </div>
           </div>
-          <h1 className="text-darkblue font-bold text-[22px] mb-[23px]">
+          <h1 className="text-darkblue font-poppins text-[22px] mb-[23px]">
             {title}
           </h1>
           <p className="text-[16px] font-poppins mb-[50px]">{description}</p>
           <div className="text-[16px] font-poppins">
-            <span className="text-darkblue font-bold">{like}</span>
+            <span className="text-darkblue font-poppins">{like}</span>
             <br />
             <span>{todo}</span>
           </div>
-          <h1 className="text-darkblue font-bold pt-4">{tool}</h1>
+          <h1 className="text-darkblue font-poppins pt-4">{tool}</h1>
           <ul className="list-none mt-4 font-poppins list-inside text-black gap-2">
             {children}
           </ul>
@@ -43,50 +52,39 @@ export const Cards = ({
       )}
 
       {project && (
-        <div className="h-[255px] rounded-[12px] bg-blue w-[346px] relative">
+        <div className="lg:h-[300px] [transform-style:preserve-3d] transition-all duration-700 hover:[transform:rotateY(180deg)] h-[200px] rounded-[12px] bg-blue lg:w-[346px] w-full lg:my-0 my-12 relative">
+         
           <div className="absolute h-full w-full top-0">
             <img
-              src="logo.png"
+              src={image}
               className="w-full h-full object-cover absolute rounded-[12px]"
             />
           </div>
-          <div
-            className={` ${
-              styling ? styling : ""
-            } w-full h-full cursor-pointer font-poppins absolute top-0 [transform-style:preserve-3d] transition-all duration-700 hover:[transform:rotateY(180deg)] rounded-[12px] grid place-content-center`}
-          >
-            <div className="text-darkblue hover:[transform:rotateY(180deg)] [perspective:1000px] [backface-visibility:visible] w-full h-full z-30 hover:text-lightgray font-bold text-[22px] absolute grid place-items-center text-center">
-              {description}
-              <div className=" inline-flex gap-3 items-center">
-                <a href={to} className="hover:text-blue">
-                  view site
-                </a>
-                <BiArrowToRight size={30} />
-              </div>
-            </div>
-          </div>
+
+
+        
+         
         </div>
       )}
+
       {startUp && (
-        <div className="h-[298px] w-[346px] hover:shadow-darkblue hover:shadow-sm p-4 text-center rounded-[12px] bg-white shadow-xl shadow-black/50">
+        <div className="lg:h-fit lg:w-[346px] shadow-darkblue shadow-sm px-4 py-10 text-center rounded-[12px] bg-white">
           <div className=" inline-flex gap-2 text-[18px] items-center font-poppins">
             <div className="w-[80px] h-[80px] rounded bg-greenblue">
               <BiCode size={80} />
             </div>
-            UJENZI PLATFORM
+            {name}
           </div>
           <div className="h-fit">
             <p className="text-[16px] text-center font-poppins mt-[17px]">
-              Since beginning my journey as a freelance designer over 11 years
-              ago, I've done remote work for agencies, consulted for startups,
-              and
+              {description}
             </p>
             <div className="w-full mt-4 grid place-content-center">
               <Button
                 link={true}
-                text={"Validating Idea"}
+                text={title}
                 icon={<BiBulb size={30} />}
-                styling={"bg-lightgray rounded text-darkblue px-2 py-px"}
+                styling={ `${styling ? styling : ""} px-2 py-px text-darkblue `}
               />
             </div>
           </div>
@@ -98,24 +96,51 @@ export const Cards = ({
             <div className="w-full h-fit grid place-content-center">
               <img
                 className="w-[96px] h-[96px] rounded-full mb-[39px]"
-                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
+                src={image}
                 alt="profile picture"
               />
             </div>
-            <div className=" inline-flex gap-4">
-              <BiDockLeft size={30} />
-              <p className="text-[22px] font-poppins text-darkblue">
-                Flowbite is just awesome. It contains tons of predesigned
-                components and pages starting from login screen to complex
-                dashboard. Perfect choice for your next SaaS application.
-              </p>
-            </div>
-            <h1 className="font-poppins pt-10 text-[22px]">Micheal Gough</h1>
-            <a data-tooltip-target="tooltip-dark" href={to} className="text-[18px] pt-2 font-poppins cursor-pointer hover:text-blue hover:underline">CEO at Google</a>
-
+            <p className="text-[18px] font-poppins text-darkblue">
+              {description}
+            </p>
+            <h1 className="font-poppins pt-10 text-[22px]">{name}</h1>
+            <a
+              data-tooltip-target="tooltip-dark"
+              href={to}
+              className="text-[18px] pt-2 font-poppins cursor-pointer hover:text-blue hover:underline"
+            >
+              {title}
+            </a>
           </figure>
         </div>
       )}
     </div>
   );
 };
+
+
+
+
+
+
+
+
+
+
+
+{/* <div
+className={`bg-darkblue bg-opacity-20 hover:bg-opacity-90 w-full h-full cursor-pointer font-poppins absolute top-0  rounded-[12px] grid place-content-center`}
+>
+<div className="text-darkblue/10 hover:[transform:rotateY(180deg)] [perspective:1000px] [backface-visibility:visible] w-full h-full z-30 hover:text-lightgray font-poppins text-[22px] absolute grid place-items-center text-center">
+  <div className="absolute top-0 right-0 inline-flex items-center gap-2 m-2 h-fit w-fit">
+    <span className="text-[12px]"></span>
+    <BiHeart />
+  </div>
+  {description}
+  <div className=" inline-flex gap-3 items-center">
+    <a href={to} className="hover:text-blue">
+      view site
+    </a>
+  </div>
+  </div>
+  </div> */}
