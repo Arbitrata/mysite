@@ -43,7 +43,7 @@ function App() {
           link={true}
           text={<BiArrowToTop size={30} />}
           styling={
-            "fixed bg-black right-0 bottom-2 lg:p-2 p-0 text-greenblue rounded-full z-50 shadow"
+            "fixed bg-black lg:right-2 right-0 bottom-2 lg:p-2 p-0 text-greenblue rounded-full z-50 shadow"
           }
         />
       </div>

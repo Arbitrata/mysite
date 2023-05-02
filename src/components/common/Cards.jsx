@@ -6,8 +6,9 @@ import {
   BiDockLeft,
   BiHeart,
 } from "react-icons/bi";
-import { FaQuoteLeft } from "react-icons/fa";
+import { FaEye, FaQuoteLeft } from "react-icons/fa";
 import Button from "./Button";
+import { GoEye } from "react-icons/go";
 
 export const Cards = ({
   services,
@@ -50,28 +51,42 @@ export const Cards = ({
           </ul>
         </div>
       )}
-
       {project && (
-        <div className="lg:h-[300px] [transform-style:preserve-3d] transition-all duration-700 hover:[transform:rotateY(180deg)] h-[200px] rounded-[12px] bg-blue lg:w-[346px] w-full lg:my-0 my-12 relative">
-         
-          <div className="absolute h-full w-full top-0">
-            <img
-              src={image}
-              className="w-full h-full object-cover absolute rounded-[12px]"
-            />
+        <div className="h-[300px] lg:w-[346px] w-full cursor-pointer group perspective">
+          <div className="relative w-full h-full preserve-3d group-hover:my-rotate-y-180 duration-700">
+            <div className="absolute rounded-[12px] backface-hidden w-full h-full">
+              <img src={image} alt="" className="lg:w-full w-[100%] h-auto" />
+            </div>
+            <div className="absolute rounded-[12px] overflow-hidden my-rotate-y-180 backface-hidden bg-darkblue w-full h-full">
+              <div className="flex text-center p-4 flex-col font-poppins items-center justify-cente w-full h-full">
+                <h1 className="text-greenblue font-bold pb-4 text-[26px] uppercase">
+                  {name}
+                </h1>
+                <p className="text-lightgray p-2">{title}</p>
+                <p className="text-greenblue">{description}</p>
+                <div className="absolute -bottom-20 delay-500 duration-700 group-hover:bottom-10 scale-0 group-hover:scale-100">
+                  <a href={todo} target="_blank" >
+                    <Button
+                      link={true}
+                      text={to}
+                      icon={icon}
+                      styling={
+                        "px-4 py-1 bg-darkblue rounded-full text-greenblue border border-greenblue"
+                      }
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-
-
-        
-         
         </div>
       )}
 
       {startUp && (
         <div className="lg:h-fit lg:w-[346px] shadow-darkblue shadow-sm px-4 py-10 text-center rounded-[12px] bg-white">
-          <div className=" inline-flex gap-2 text-[18px] items-center font-poppins">
-            <div className="w-[80px] h-[80px] rounded bg-greenblue">
-              <BiCode size={80} />
+          <div className="inline-flex  gap-2 text-[18px] items-center font-poppins">
+            <div className="w-[80px]  h-[80px]">
+              <img src={image} alt="" className="w-full h-full" />
             </div>
             {name}
           </div>
@@ -83,8 +98,10 @@ export const Cards = ({
               <Button
                 link={true}
                 text={title}
-                icon={<BiBulb size={30} />}
-                styling={ `${styling ? styling : ""} px-2 py-px text-darkblue `}
+                icon={icon}
+                styling={`${
+                  styling ? styling : ""
+                } px-2 py-2 rounded text-darkblue `}
               />
             </div>
           </div>
@@ -118,17 +135,8 @@ export const Cards = ({
   );
 };
 
-
-
-
-
-
-
-
-
-
-
-{/* <div
+{
+  /* <div
 className={`bg-darkblue bg-opacity-20 hover:bg-opacity-90 w-full h-full cursor-pointer font-poppins absolute top-0  rounded-[12px] grid place-content-center`}
 >
 <div className="text-darkblue/10 hover:[transform:rotateY(180deg)] [perspective:1000px] [backface-visibility:visible] w-full h-full z-30 hover:text-lightgray font-poppins text-[22px] absolute grid place-items-center text-center">
@@ -143,4 +151,5 @@ className={`bg-darkblue bg-opacity-20 hover:bg-opacity-90 w-full h-full cursor-p
     </a>
   </div>
   </div>
-  </div> */}
+  </div> */
+}

@@ -5,15 +5,41 @@ import {
   BsInstagram,
   BsLinkedin,
   BsTwitter,
+  BsWhatsapp,
 } from "react-icons/bs";
 
 function Footer() {
   const socialLinks = [
-    { icon: <BsFacebook size={20} />, link: "/", label: "Facebook" },
-    { icon: <BsInstagram size={20} />, link: "/", label: "Instagram" },
-    { icon: <BsTwitter size={20} />, link: "/", label: "Twitter" },
-    { icon: <BsLinkedin size={20} />, link: "/", label: "LinkedIn" },
-    { icon: <BsGithub size={20} />, link: "/", label: "Github" },
+    {
+      icon: <BsFacebook size={20} />,
+      link: "https://www.facebook.com/profile.php?id=100083791382825",
+      label: "Facebook",
+    },
+    {
+      icon: <BsInstagram size={20} />,
+      link: "https://www.instagram.com/andy_andrew76/",
+      label: "Instagram",
+    },
+    {
+      icon: <BsTwitter size={20} />,
+      link: "https://twitter.com/AndrewMbugua19",
+      label: "Twitter",
+    },
+    {
+      icon: <BsLinkedin size={20} />,
+      link: "https://www.linkedin.com/in/andrew-mbugua-04a575237/",
+      label: "LinkedIn",
+    },
+    {
+      icon: <BsGithub size={20} />,
+      link: "https://github.com/Arbitrata",
+      label: "Github",
+    },
+    {
+      icon: <BsWhatsapp size={20} />,
+      link: "https://wa.me/+254700463499?text= Hello Andrew,",
+      label: "WhatsApp",
+    },
   ];
 
   return (
@@ -23,24 +49,22 @@ function Footer() {
           <img src="andy-logo.png" className="h-[104px] bg-lightgray w-auto" />
         </div>
         <h1 className="font-poppins text-center my-[35px] text-[22px] text-lightgray">
-          Living, learning, & leveling up <br /> one day at a time.
+          Taking things one day at a time, <br /> I am constantly living,
+          learning, and leveling up
         </h1>
 
         <div className="w-full h-100px gap-6 justify-center">
           <ul className="flex gap-4 w-full justify-between">
             {socialLinks.map((link) => (
-              <li className="p-4 text-greenblue border border-greenblue hover:bg-blue/20 hover:text-white cursor-pointer rounded-full">
-                <a href={link.link}>{link.icon}</a>
+              <li key={Math.random()} className="lg:p-4 p-2 text-greenblue border border-greenblue hover:bg-blue/20 hover:text-white cursor-pointer rounded-full">
+                <a href={link.link} target="_blank">{link.icon}</a>
               </li>
             ))}
           </ul>
         </div>
         <h1 className="font-poppins text-center my-[35px] text-[18px] text-lightgray">
-          Handcoded by me © andrewmbugua
+          All Rights Reserved © Andrew 2023
         </h1>
-        <span className="w-full text-center text-lightgray font-medium">
-          all rights reserved @ndrew 2023
-        </span>
       </div>
     </footer>
   );

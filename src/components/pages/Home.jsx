@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "../common/Button";
 import { Cards } from "../common/Cards";
-import { Slide, Fade } from "react-slideshow-image";
+import { Fade } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import { BiLaptop, BiMessage } from "react-icons/bi";
+import { BiCodeBlock, BiSitemap } from "react-icons/bi";
 import { handleScroll } from "../common/ScrollToTop";
 import Navbar from "../common/Navbar";
 import { Link } from "react-router-dom";
-import { GoProject } from "react-icons/go";
-import { GiBrainstorm } from "react-icons/gi";
+import { GoBrowser, GoProject, GoRepo } from "react-icons/go";
+import { GiBrainstorm, GiSkills } from "react-icons/gi";
+import { FaEye, FaRunning, FaServer } from "react-icons/fa";
+import { FcIdea } from "react-icons/fc";
+import { MdDeveloperMode } from "react-icons/md";
 
 export const Hero = () => {
   return (
@@ -21,9 +24,10 @@ export const Hero = () => {
         <h1>I build things for the web.</h1>
       </div>
       <p className="lg:w-[820px] w-[100%] lg:text-[22px] text-md mt-2 font-poppins">
-        I’m a software engineer specializing in building (and occasionally
-        designing) exceptional digital experiences. Currently, I’m focused on
-        building accessible, human-centered products at Apprentice
+        As a passionate software developer, I have extensive experience in
+        designing and developing high-quality digital products. My focus is on
+        creating accessible and human-centered software solutions that are
+        optimized for performance, reliability, and scalability.
       </p>
 
       <div className="w-fit h-fit mt-10">
@@ -51,7 +55,7 @@ export const Services = () => {
     "ReactJs",
     "Figma",
     "Miro",
-    "Outsystem",
+    "Learning *Outsystem* ",
   ];
   const backendSkills = [
     "NodeJs",
@@ -59,11 +63,12 @@ export const Services = () => {
     "PostgreSQL",
     "mySQL",
     "MongoDB",
-    "heroku",
+    "Heroku",
+    "Node Package Manager",
   ];
   const otherSkills = [
-    "agile methodology",
-    "project management",
+    "Agile methodology",
+    "Project management",
     "Data modelling",
     "UI/UX design",
     "Srum master",
@@ -77,13 +82,13 @@ export const Services = () => {
       <div className="grid lg:grid-cols-3 lg:px-0 px-4 h-fit w-fit gap-1 place-items-center lg:absolute relative -top-[130px]">
         <Cards
           services={true}
-          icon={<BiLaptop size={60} />}
+          icon={<BiCodeBlock size={50} />}
           title={"Front End Development"}
           description={
-            " I value simple content structure, clean design patterns, and thoughtful interactions."
+            " I prioritize creating clean and simple user interfaces with intuitive navigation and easy-to-use design patterns."
           }
-          todo={"Tools and skills: "}
-          like={" Things I enjoy designing:"}
+          todo={"VS code,Sublime Text, github,"}
+          like={" Tools and skills:"}
           children={
             <>
               {frontendSkills.map((skill) => (
@@ -96,13 +101,13 @@ export const Services = () => {
         />
         <Cards
           services={true}
-          icon={<BiLaptop size={60} />}
+          icon={<FaServer size={50} />}
           title={"Backend Development"}
           description={
-            " I value simple content structure, clean design patterns, and thoughtful interactions."
+            " I place a strong emphasis on developing secure and scalable systems that meet the unique requirements of each project."
           }
-          todo={"Tools and skills: "}
-          like={" Things I enjoy designing:"}
+          todo={"PostgreSQL (DBMs), API dev tool (Thunder Client && Postman)"}
+          like={" Tools and skills: "}
           children={
             <>
               {backendSkills.map((skill) => (
@@ -116,13 +121,14 @@ export const Services = () => {
 
         <Cards
           services={true}
-          icon={<BiLaptop size={60} />}
-          title={" Technical, Managerial & communication"}
+          icon={<GiSkills size={50} />}
+          title={"Technical, Managerial & communication"}
           description={
-            " I value simple content structure, clean design patterns, and thoughtful interactions."
+            "Experienced in Project management with strong communication skills and knowledge of Agile methodologies and Git."
           }
-          todo={"Tools and skills: "}
-          like={" Things I enjoy designing:"}
+          like={
+            " My interests extend beyond coding softwares, and I also enjoy"
+          }
           children={
             <>
               {otherSkills.map((skill) => (
@@ -146,16 +152,18 @@ export const About = () => {
         className="z-10 text-center bg-darkblue text-lightgray lg:px-[94px] px-4 lg:h-[500px] h-[600px]"
       >
         <h1 className="text-[29px] font-poppins pt-[50px]">
-          Hi, I’m Andrew. Nice to meet you.
+          Hello, my name is Andrew.
         </h1>
         <div className="w-full h-fit grid place-content-center">
           <p className="text-[18px] text-center font-poppins mt-[18px] lg:w-[768.31px] w-auto">
-            Since beginning my journey as a freelance designer over 11 years
-            ago, I've done remote work for agencies, consulted for startups, and
-            collaborated with talented people to create digital products for
-            both business and consumer use. I'm quietly confident, naturally
-            curious, and perpetually working on improving my chops one design
-            problem at a time.
+            Since my journey as a full-stack software engineer began, I have
+            dedicated myself to building efficient, scalable, and user-friendly
+            software solutions. With expertise in modern frameworks such as
+            React and Node.js, I'm committed to delivering high-quality code and
+            exceeding my clients' expectations. I approach every project with
+            enthusiasm and a positive attitude, always looking for new
+            technologies and methodologies to improve my skills and create
+            better software.
           </p>
         </div>
       </div>
@@ -166,10 +174,45 @@ export const About = () => {
 
 export const MyWork = () => {
   const myProjects = [
-    { description: "", image: "ujenzi.png" },
-    // { description: "", image: "stawi.png" },
-    // { description: "", image: "agency.png" },
-    // { description: "", image: "agency.png" },
+    {
+      name: "Ujenzi",
+      description:
+        "Responsive web application using React with a server-side component built with Node.js & a PostgreSQL database management system.",
+      image: "ujenzi.png",
+      link: "View repository",
+      icon: <BiSitemap />,
+      href: "https://github.com/Arbitrata/ujenzi-platform"
+    },
+    {
+      name: "SasaQuote",
+      stage: "development",
+      description:
+        "Web-only site using React and a RESTful API, ie the RapidAPI hub API, that generate new quotes every time the page is reloaded.",
+      image: "sasaquote.png",
+      link: "Browse site with a desktop",
+      icon: <GoBrowser />,
+      href: "https://arbitrata.github.io/sasakazi_test/"
+    },
+    {
+      name: "stawi",
+      stage: "production",
+      description:
+        "A Client project that is developed using the React framework and styled using Tailwind CSS.",
+      image: "stawi.png",
+      link: "view site",
+      icon: <FaEye />,
+      href: "https://stawifood.co.ke/"
+    },
+    {
+      name: "Crud application",
+      stage: "development",
+      description:
+        "Collaborated with a team member on GitHub to create and develop various features for a to-do application.",
+      image: "crud.png",
+      link: "view site",
+      icon: <FaEye />,
+      href: "https://arbitrata.github.io/masters-crud-application/"
+    },
   ];
 
   return (
@@ -182,19 +225,28 @@ export const MyWork = () => {
           My Recent Work
         </h1>
         <h1 className="text-black lg:px-0 px-4">
-          Here are a few past design projects I've worked on. Want to see more?
-          <a href="" className="text-blue hover:underline font-semibold">
-            Email me.
+          I've previously worked on several projects which I would be happy to
+          share with you?
+          <a
+            href="https://github.com/Arbitrata"
+            className="text-blue pl-3 hover:underline font-semibold"
+          >
+            Are you interested in seeing more?
           </a>
         </h1>
       </div>
-      <div className="lg:grid grid-cols-3 gap-6 h-fit w-full lg:static relative lg:place-items-center lg:px-[10%] px-4 lg:py-[50px] py-10">
+      <div className="grid lg:grid-cols-3 grid-cols-1 lg:static relative gap-6 h-fit w-full lg:place-items-center lg:px-[10%] px-4 lg:py-[50px] py-10">
         {myProjects.map((project) => (
+          <div key={Math.random(100)}>
           <Cards
             project={true}
             description={project.description}
             image={project.image}
-          />
+            to={project.link}
+            icon={project.icon}
+            name={project.name}
+            todo={project.href}
+          /></div>
         ))}
       </div>
     </div>
@@ -231,36 +283,64 @@ export const Partner = () => {
 };
 
 export const ProjectCard = () => {
-
   const startUpsProjects = [
     {
-      name: "Ujenzi platform",
-      description : "Since beginning my journey as a freelance designer over 11 years ago, I've done remote work for agencies, consulted for startups,and",
-      logo: "",
-
+      name: "Agency",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzhK1L3yByF5eaC7grNTEzprSiMyKwMiRD5g&usqp=CAU",
+      description:
+        "Maximize success by strengthening online presence and leveraging strategic advantages",
+      stage: "Executing",
+      icon: <FaRunning />,
+      style: "bg-greenblue",
     },
     {
       name: "Ujenzi platform",
-      description : "Since beginning my journey as a freelance designer over 11 years ago, I've done remote work for agencies, consulted for startups,and",
-      logo: "",
-      
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5wsSC41vAExPH4FAfTZCRYmllsmMRsXruGw&usqp=CAU",
+      description:
+        "An online facilitation platform that streamlines the procurement process of acquiring materials.",
+      stage: "in development",
+      icon: <MdDeveloperMode />,
+      style: "bg-lightgray",
     },
     {
-      name: "Ujenzi platform",
-      description : "Since beginning my journey as a freelance designer over 11 years ago, I've done remote work for agencies, consulted for startups,and",
-      logo: "",
-      
+      name: "E-eco-warrior",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcTITCBuLl_V9cYMavW5MEJSO9-10RGKtm6p4IQGzXklxs94cLvowJVRgd7_Lz4GB8c_U&usqp=CAU",
+      description:
+        "sophisticated digital framework that integrates a vast array of environmental variables and factors",
+      stage: "validating idea",
+      icon: <FcIdea />,
+      style: "bg-greenblue bg-opacity-20",
     },
-  ]
+    {
+      name: "Farmerspace",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn89ThypG3ohjtX6vzMAxMTSWlTOJIs2TCYA&usqp=CAU",
+      description:
+        "A digital space designed simply and efficiently for farmers",
+      stage: "validating idea",
+      icon: <FcIdea />,
+      style: "bg-greenblue bg-opacity-20",
+    },
+  ];
 
   return (
-    <div className="w-full relative lg:h-fit h-[2000px] mb-11 grid grid-rows-4 place-items-center pb-[400px] lg:pb-[200px]">
+    <div className="w-full absolute lg:h-fit mb-11 grid grid-rows-4 place-items-center pb-[400px] lg:pb-[200px]">
       <div className="grid lg:grid-cols-3 h-fit w-fit gap-6 lg:px-0 px-4 place-items-center absolute -top-[130px]">
-{
-  startUpsProjects.map(startUpProject => (
-    <Cards startUp={true} name={startUpProject.name} description={startUpProject.description} />
-  ))
-}
+        {startUpsProjects.map((startUpProject) => (
+          <div key={Math.random(200)}>
+          <Cards
+            startUp={true}
+            name={startUpProject.name}
+            description={startUpProject.description}
+            image={startUpProject.image}
+            icon={startUpProject.icon}
+            styling={startUpProject.style}
+            title={startUpProject.stage}
+          /></div>
+        ))}
       </div>
     </div>
   );
@@ -268,20 +348,21 @@ export const ProjectCard = () => {
 
 export const Projects = () => {
   return (
-    <div className="lg:h-fit h-[1500px] lg:static relative w-full mt-10 py-10">
+    <div className="lg:h-[1000px] h-[1800px] lg:static relative w-full mt-10 py-10">
       <div
         id="startUp"
         className="z-10 text-center bg-darkblue text-lightgray lg:px-[94px] px-4 lg:h-[469px] h-[550px]"
       >
         <h1 className="text-[29px] font-poppins pt-[49px]">
-          My Startup Projects
+          My Startup Projects and Notions.
         </h1>
         <div className="w-full h-fit grid place-content-center">
           <p className="text-[18px] text-center font-normal mt-[17px] lg:w-[768.31px]">
-            I'm a bit of a digital product junky. Over the years, I've used
-            hundreds of web and mobile apps in different industries and
-            verticals. Eventually, I decided that it would be a fun challenge to
-            try designing and building my own.
+            As an imaginative developer, I've recognized various problems and
+            limitations within society and the technological sphere. My
+            experience interacting with various virtual systems inspired me to
+            transition my skills and pursue innovative solutions, leading me to
+            generate several startup ideas that could benefit society.
           </p>
         </div>
       </div>
@@ -301,8 +382,9 @@ export const CallToAction = (props) => {
             Interested in collaborating with me?
           </h2>
           <p className="my-[25px] font-poppins text-[18px] ">
-            I’m always open to discussing product design work or partnership
-            opportunities.
+            I'm always open to having conversations about product design,
+            software development work, or exploring potential collaboration and
+            partnership opportunities.
           </p>
           <Link to={"contact"}>
             <Button
@@ -350,9 +432,9 @@ export const Testinoinials = () => {
 
   return (
     <div className="w-full lg:h-[650px] h-fit lg:pb-0 pb-[100px] overflow-hidden relative">
-      <div className="w-full h-fit grid place-content-center text-center py-[30px] gap-y-4">
+      <div className="w-full h-fit grid place-content-center text-center text-darkblue py-[30px] gap-y-4">
         <h1 className="text-[27px] font-poppins">Testimonials</h1>
-        <p className="text-[22px] font-poppins">
+        <p className="text-[22px] font-poppins ">
           People I've worked with have said some nice things...
         </p>
       </div>
@@ -362,13 +444,14 @@ export const Testinoinials = () => {
       <div className="lg:mx-[6%]">
         <Fade>
           {slideshow.map((testimonial) => (
+            <div key={Math.random(300)}>
             <Cards
               image={testimonial.image}
               testimonial={true}
               title={testimonial.title}
               name={testimonial.name}
               description={testimonial.text}
-            />
+            /></div>
           ))}
         </Fade>
       </div>
@@ -385,8 +468,8 @@ export const LastSection = (props) => {
           Start a project
         </div>
         <div className="text-[17px] px-10 text-lightgray font-poppins h-full items-center grid place-content-center text-center col-span-2">
-          Interested in working together? We should queue up a time to chat.
-          I’ll buy the coffee.
+          Would you be interested in collaborating together? We can schedule a
+          time to have a chat, and I'll treat you to coffee.
         </div>
         <div className="text-[30px] h-full items-center w-full grid place-content-center  col-span-1">
           <Link to={"contact"}>
