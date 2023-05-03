@@ -421,7 +421,7 @@ export const Testinoinials = () => {
       title: "Product designer",
       image:
         "https://media.licdn.com/dms/image/D4D03AQHxauh2UgkiRw/profile-displayphoto-shrink_200_200/0/1666429101465?e=1687996800&v=beta&t=EC7aOcPhsvInqR0A-AL8jLf58PMD0MpD7IrUPOxG3og",
-      text: "I had a chance to interact and work with andrew at Apprentice Cloud with Andrew who is a self motivated and result driven individual who is committed to delivering the best results.",
+      text: "I had a chance to interact and work with andrew at Apprentice Cloud. Andrew is a self motivated and result driven individual who is committed to delivering the best results.",
     },
     {
       name: "Timothy munene",
@@ -429,7 +429,7 @@ export const Testinoinials = () => {
       to: "https://www.linkedin.com/in/timothy-kariuki-3t6s/",
       image:
         "https://media.licdn.com/dms/image/C4D03AQFr-SHfP6b2ng/profile-displayphoto-shrink_800_800/0/1650641966669?e=1687996800&v=beta&t=L9IrMABdyzXL_v2C6UyIyXs-XQ466nt_MjcNn7ys96U",
-      text: "I've known Andrew for almost a year and have found him to be hardworking, goal-oriented, tenacious, and an achiever. I believe that his academic credentials and technical skills will be extremely valuable to you as a client and to your company.",
+      text: "I've known Andrew for years and have found him to be hardworking, goal-oriented, tenacious, and an achiever. I believe that his academic credentials and technical skills will be extremely valuable to you as a client and to your company.",
     },
   ];
 
