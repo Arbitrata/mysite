@@ -285,12 +285,12 @@ export const Partner = () => {
 export const ProjectCard = () => {
   const startUpsProjects = [
     {
-      name: "Agency",
+      name: "agency",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzhK1L3yByF5eaC7grNTEzprSiMyKwMiRD5g&usqp=CAU",
       description:
         "Maximize success by strengthening online presence and leveraging strategic advantages",
-      stage: "Executing",
+      stage: "in development",
       icon: <FaRunning />,
       style: "bg-greenblue",
     },
@@ -409,13 +409,15 @@ export const Testinoinials = () => {
   const slideshow = [
     {
       name: "Josephine Wairimu",
-      title: "Product designer",
+      to: "https://www.linkedin.com/in/josephinewairimu/",
+      title: "Software developer & Technical mentor",
       image:
         "https://media.licdn.com/dms/image/C4E03AQFiP9my7PDd6g/profile-displayphoto-shrink_200_200/0/1650316273970?e=1687996800&v=beta&t=75NA77VCt_e-v0d1dpyEhTmpYakKkKqA1Gvd1KbfLQc",
       text: "I have been working with Andrew since January 2022 in an apprenticeship program and his expertise and professionalism are evident throughout the development cycle, and am all the team members are very pleased with the final product that he produced. He has shown enormous skill and vast domain knowledge and his software development expertise is reliable and trustworthy. I would recommend Andrew to anyone looking for quality Software development services, delivered in a professional manner.",
     },
     {
       name: "Alex Mwangi",
+      to: "https://www.linkedin.com/in/waweru-mwangi-8994a9231/",
       title: "Product designer",
       image:
         "https://media.licdn.com/dms/image/D4D03AQHxauh2UgkiRw/profile-displayphoto-shrink_200_200/0/1666429101465?e=1687996800&v=beta&t=EC7aOcPhsvInqR0A-AL8jLf58PMD0MpD7IrUPOxG3og",
@@ -424,6 +426,7 @@ export const Testinoinials = () => {
     {
       name: "Timothy munene",
       title: "Software Developer",
+      to: "https://www.linkedin.com/in/timothy-kariuki-3t6s/",
       image:
         "https://media.licdn.com/dms/image/C4D03AQFr-SHfP6b2ng/profile-displayphoto-shrink_800_800/0/1650641966669?e=1687996800&v=beta&t=L9IrMABdyzXL_v2C6UyIyXs-XQ466nt_MjcNn7ys96U",
       text: "I've known Andrew for almost a year and have found him to be hardworking, goal-oriented, tenacious, and an achiever. I believe that his academic credentials and technical skills will be extremely valuable to you as a client and to your company.",
@@ -451,6 +454,7 @@ export const Testinoinials = () => {
               title={testimonial.title}
               name={testimonial.name}
               description={testimonial.text}
+              to={testimonial.to}
             /></div>
           ))}
         </Fade>
