@@ -49,31 +49,31 @@ function App() {
       </div>
 
       <Routes>
-        <Route path="">
-          <Route
-            index
-            element={
-              <Home
-                renderText={renderText}
-                setActiveText={setActiveText}
-                setActiveForm={setActiveForm}
-              />
-            }
-          />
+        
+        <Route
+          path="/"
+          element={
+            <Home
+              renderText={renderText}
+              setActiveText={setActiveText}
+              setActiveForm={setActiveForm}
+            />
+          }
+        />
 
-          <Route
-            path="/contact"
-            element={
-              <Contact
-                renderText={renderText}
-                setActiveText={setActiveText}
-                activeText={activeText}
-                activeForm={activeForm}
-                setActiveForm={setActiveForm}
-              />
-            }
-          />
-        </Route>
+        <Route
+          path="/contact"
+          element={
+            <Contact
+              renderText={renderText}
+              setActiveText={setActiveText}
+              activeText={activeText}
+              activeForm={activeForm}
+              setActiveForm={setActiveForm}
+            />
+          }
+        />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
