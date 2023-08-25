@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Home } from "./components/pages/Home";
 import Footer from "./components/common/Footer";
