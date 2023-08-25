@@ -38,14 +38,7 @@ export default function Contact(props) {
         }
       );
   };
-
-  // const formToClear = document.getElementById('myForm');
-  // const clearButton = document.getElementById('clearButton');
-
-  // clearButton.addEventListener('click', () => {
-  //   formToClear.reset();
-  // });
-
+  
   const [open, setOpen] = useState(false);
 
   return (
