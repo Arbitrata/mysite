@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "./components/common/Navbar";
 import { Home } from "./components/pages/Home";
 import Footer from "./components/common/Footer";
 import Button from "./components/common/Button";
@@ -9,6 +8,7 @@ import { goToTop } from "./components/common/ScrollToTop";
 import Contact from "./components/pages/Contact";
 import renderText from "./components/common/RenderContactPage";
 import { NotFound } from "./components/pages/NotFound";
+import ScrollToTop from "./components/common/events/Scroll";
 
 function App() {
   const [activeText, setActiveText] = useState("");
@@ -47,9 +47,8 @@ function App() {
           }
         />
       </div>
-
+      <ScrollToTop />
       <Routes>
-        
         <Route
           path="/"
           element={

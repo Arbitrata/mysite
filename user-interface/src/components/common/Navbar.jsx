@@ -17,12 +17,12 @@ const Navbar = (props) => {
     {
       to: "mywork",
       position: "start",
-      label: "Worked Projects",
+      label: "My work",
     },
     {
       to: "startUp",
       position: "nearest",
-      label: "StartUp Projects",
+      label: "Projects",
     },
   ];
 
