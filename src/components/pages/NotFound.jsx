@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import Button from "../common/Button";
 
 export const NotFound = () => {
+  useEffect(() => {
+    localStorage.removeItem("activeLink");
+  }, []);
   return (
     <div className="h-screen w-full bg-lightgray lg:flex items-center">
       <div className="container flex flex-col md:flex-row items-center justify-between px-5 text-gray-700">
