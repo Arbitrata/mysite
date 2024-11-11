@@ -8,18 +8,16 @@ import {
   BsWhatsapp,
 } from "react-icons/bs";
 import { handleScroll } from "../common/ScrollToTop";
-import { FaMouse } from "react-icons/fa";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { SiMedium, SiUpwork } from "react-icons/si";
 import {
   MdNavigateBefore,
   MdNavigateNext,
-  MdOutlineCallMissedOutgoing,
 } from "react-icons/md";
-import { ExpertiseCard } from "../common";
-import { Tooltip, Button, Statistic } from "antd";
-import { GoProject } from "react-icons/go";
+import { ContactForm, Counter, ExpertiseCard } from "../common";
+import { Tooltip, Button } from "antd";
+import { VerticalAlignBottomOutlined } from "@ant-design/icons";
 
 export default function LandingPage() {
   const links = [
@@ -37,6 +35,12 @@ export default function LandingPage() {
       to: "projects",
       position: "start",
       label: "Projects",
+    },
+    {
+      to: "contact",
+      position: "start",
+      label: "Contact",
+      hidden: true,
     },
   ];
 
@@ -56,6 +60,12 @@ export default function LandingPage() {
     localStorage.setItem("activeLink", JSON.stringify(link));
     handleScroll(link.to, link.position, 100);
     setActiveLink(link);
+  };
+
+  const handleContactSection = (to, position) => {
+    localStorage.setItem("activeLink", JSON.stringify(links[3]));
+    handleScroll(to, position, 100);
+    setActiveLink(links[3]);
   };
 
   useEffect(() => {
@@ -250,7 +260,7 @@ export default function LandingPage() {
         id="about"
         className=" w-full min-h-screen md:h-screen h-[1000px] relative flex flex-col"
       >
-        <div className="w-full h-full min-h-screen  overflow-hidden absolute top-0">
+        <div className="w-full lg:h-screen h-full min-h-screen  overflow-hidden absolute top-0">
           <img
             src="bg-port.jpg"
             alt=""
@@ -258,7 +268,7 @@ export default function LandingPage() {
           />
         </div>
         <div className="w-full absolute top-0 lg:h-screen h-full bg-gradient-to-b from-[rgba(15,23,42,0.9)] from-35% via-[rgba(15,23,42,0.7)] to-[rgba(15,23,42)] flex ">
-          <div className="w-full lg:h-screen min-h-screen max-h-[700px] h-full lg:flex lg:flex-row flex-col justify-center md:block mx-auto 2xl:max-w-[1600px] lg:py-[80px] py-[50px] lg:px-[120px] md:px-[60px] px-6 leading-relaxed">
+          <div className="w-full lg:h-screen min-h-screen max-h-[700px] h-fit lg:flex lg:flex-row flex-col justify-center md:block mx-auto 2xl:max-w-[1600px] lg:py-[80px] py-[50px] lg:pt-8 pt-[80px] lg:px-[120px] md:px-[60px] px-6 leading-relaxed">
             <div className="lg:w-2/5 w-full flex flex-col justify-between relative">
               <div className="lg:space-y-3 md:space-y-12 space-y-6">
                 <h1 className="xl:text-[55px] 2xl:text-[55px] md:text-[35px] sm:text-[33px] text-[35px] font-semibold text-white tracking-wide">
@@ -267,34 +277,36 @@ export default function LandingPage() {
                 <p className="text-white xl:text-[20px] lg:text-[16px] md:text-[14px] text-[14px] font-normal tracking-wide">
                   Software Engineer / UI & UX Designer
                 </p>
-                <p className="text-grayish lg:max-w-[100%] md:max-w-[70%] max-w-[99%] lg:text-[16px] md:text-[15px] text-[14px] font-light pr-[6%] font-roboto">
+                <p className="text-grayish lg:max-w-[100%] md:max-w-[70%] max-w-[99%] lg:text-[16px] md:text-[15px] text-[12px] font-light pr-[6%] font-roboto">
                   I craft seamless, high-performance software solutions that
                   drive user engagement and satisfaction.
                 </p>
                 <ul className="w-full h-fit list-none lg:pt-[8%] lg:pb-10 pb-4 md:pt-[4%] 2xl:space-y-6 space-y-3 md:flex hidden flex-col">
-                  {links.map((link) => (
-                    <li
-                      key={link.to}
-                      className={`cursor-pointer rounded-full font-semibold ${
-                        activeLink.to === link.to
-                          ? "text-greenblue"
-                          : "text-white opacity-60"
-                      }`}
-                      onClick={() => handleClick(link)}
-                    >
-                      {link.label}
-                      <hr
-                        className={`transition-all duration-300 ${
+                  {links
+                    .filter((link) => !link.hidden)
+                    .map((link) => (
+                      <li
+                        key={link.to}
+                        className={`cursor-pointer rounded-full text-[13px] font-medium ${
                           activeLink.to === link.to
-                            ? "w-1/3 border border-greenblue"
-                            : "w-1/5 border border-white"
+                            ? "text-greenblue"
+                            : "text-white opacity-60"
                         }`}
-                      />
-                    </li>
-                  ))}
+                        onClick={() => handleClick(link)}
+                      >
+                        {link.label}
+                        <hr
+                          className={`transition-all duration-300 ${
+                            activeLink.to === link.to
+                              ? "w-1/3 border border-greenblue"
+                              : "w-1/5 border border-white"
+                          }`}
+                        />
+                      </li>
+                    ))}
                 </ul>
               </div>
-              <div className="lg:absolute bottom-0 lg:mt-0 mt-12 w-full flex">
+              <div className="lg:absolute bottom-0 lg:mt-0 mt-12 w-full lg:flex hidden">
                 <ul className="flex gap-x-4 w-full">
                   {socialLinks.map((link) => (
                     <li
@@ -311,26 +323,41 @@ export default function LandingPage() {
                 </ul>
               </div>
             </div>
-            <div className="lg:w-3/5 h-full w-full flex flex-col lg:pl-[10%] lg:pt-6 pt-12 relative">
-              <p className="text-grayish md:text-[14px] text-[12px  2xl:text-[20px] font-roboto">
-                In 2022, I dove into software development and quickly found a
-                passion for building robust, user-focused applications. Since
-                then, I’ve worked across sectors like startups and tech
-                companies, crafting responsive front-ends and reliable back-end
-                systems. My current role at Radia Perlman Technologies involves
-                creating seamless digital experiences with tools like React,
-                Vue.js, Node.js, and Express to deliver high-performing,
-                scalable solutions. <br /><br /> I enjoy translating complex
-                requirements into effective, intuitive applications, balancing
-                design and functionality. When I’m not coding, I stay updated on
-                tech trends or unwind with a good book or outdoor activities.
+            <div className="lg:w-3/5 h-full w-full flex flex-col lg:pl-[10%] lg:pt-6 pt-6 relative">
+              <li
+                className={`cursor-pointer list-none rounded-full text-[13px] font-medium text-greenblue mb-6 lg:hidden flex flex-col`}
+              >
+                {"About"}
+                <hr
+                  className={`transition-all duration-300 w-1/3 border border-greenblue`}
+                />
+              </li>
+              <p className="text-grayish md:text-[14px] text-[13px]  2xl:text-[20px] font-roboto">
+                In 2022, I ventured into software development and quickly
+                discovered a passion for building user-centric applications.
+                Since then, I’ve worked with a variety of sectors, including
+                startups and tech companies, creating responsive front-end
+                solutions and robust back-end systems. Now, as a freelancer, I
+                focus on delivering seamless digital experiences with tools like
+                React, Vue.js, Node.js, and Express, crafting scalable,
+                high-performance solutions tailored to my clients' needs. <br />
+                <br /> I enjoy turning complex requirements into intuitive
+                applications that balance design and performance. When not
+                coding, I stay updated on tech trends or unwind with a good book
+                or outdoor activities.
               </p>
               <div className="h-fit font-roboto lg:absolute bottom-0 lg:mt-0 mt-[40px] flex flex-grow lg:justify-center justify-center">
                 <Button
                   type="secondary"
-                  icon={<MdOutlineCallMissedOutgoing />}
+                  onClick={() => handleContactSection("contact", "start")}
+                  icon={
+                    <span className="relative flex">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-greenblue opacity-25"></span>
+                      <VerticalAlignBottomOutlined className="relative inline-flex text-sky-500" />
+                    </span>
+                  }
                   iconPosition={"end"}
-                  className="rounded-full border py-6 px-12 border-greenblue text-greenblue text-[14px] font-medium"
+                  className="rounded-full border py-6 px-12 border-white text-white text-[14px] font-medium"
                 >
                   Get In Touch
                 </Button>
@@ -354,7 +381,7 @@ export default function LandingPage() {
               responsive={responsive}
               items={expertise}
               autoPlay={false}
-              disableDotsControls={true}
+              disableDotsControls={false}
               disableButtonsControls={false}
               paddingLeft={0}
               paddingRight={0}
@@ -387,10 +414,10 @@ export default function LandingPage() {
       <div id="projects" className="w-full h-fit bg-iceblue">
         <div className="w-full h-full md:flex justify-center items-center mx-auto 2xl:max-w-[1600px] lg:py-[60px] py-[40px] lg:px-[120px] md:px-[60px] px-6">
           <div className="md:w-1/2 h-fit md:space-y-12 space-y-6">
-            <h1 className="xl:text-[55px] 2xl:text-[55px] md:text-[35px] sm:text-[33px] text-[35px] font-semibold text-blackBg tracking-wide text-left">
+            <h1 className="xl:text-[55px] 2xl:text-[55px] md:text-[35px] sm:text-[33px] text-[35px] font-semibold text-black tracking-wide text-left">
               My Work
             </h1>
-            <h3 className="text-blackBg md:text-[14px] text-[12px lg:text-[16px] 2xl:text-[20px] font-normal tracking-wide font-roboto">
+            <h3 className="text-black opacity-60 md:text-[14px] text-[12px lg:text-[16px] 2xl:text-[20px] font-normal tracking-wide font-roboto">
               I’ve built and deployed scalable applications using React,
               Next.js, Node.js, and PostgreSQL, ranging from e-commerce
               platforms to management systems. With over 15+ solo projects and
@@ -400,30 +427,29 @@ export default function LandingPage() {
               applications and explore innovative ways to enhance user
               experience.
             </h3>
-            <div className="w-full h-fit grid grid-cols-2 gap-6">
-              <Statistic
-                title="Projects"
-                value={25}
-                prefix={<GoProject size={22} />}
-                suffix={"+"}
-              />
+            <div className="w-full h-fit grid grid-cols-3 gap-6">
+              <Counter label={"Projects"} start={10} end={25} />
+              <Counter label={"Clients"} start={3} end={10} />
             </div>
           </div>
-          <div className="md:w-1/2 h-full flex justify-center items-center md:mt-0 mt-6">
+          <div className="md:w-1/2 h-full flex justify-center items-center md:mt-0 mt-12">
             <div
-              className="relative md:w-[400px] w-full h-full bg-no-repeat bg-contain bg-center"
+              className="relative w-full h-full bg-no-repeat bg-contain bg-center"
               style={{
                 backgroundImage: `url('/smart.svg')`,
+                backgroundSize: "contain",
+                backgroundPosition: "center",
+                height: "400px",
               }}
-            >
-              <img
-                src="featured.png"
-                alt="Featured"
-                className="w-[100%] max-h-[600px] h-[100%] object-cover rounded-[50px]"
-              />
-            </div>
+            ></div>
           </div>
         </div>
+      </div>
+      <div
+        id="contact"
+        className="w-full h-fit relative mx-auto 2xl:max-w-[1600px] overflow-hidden lg:py-[80px] py-[40px] lg:px-[120px] md:px-[60px] px-6 space-y-6"
+      >
+        <ContactForm />
       </div>
     </div>
   );
