@@ -19,7 +19,7 @@ export default function ExpertiseCard({
   };
 
   return (
-    <div className="w-[100%] min-h-[420px] h-fit bg-iceblue relative group overflow-hidden rounded">
+    <div className="w-[100%] lg:min-h-[440px] md:min-h-[450px] min-h-[480px] h-fit bg-iceblue bg-opacity-10 relative group overflow-hidden rounded">
       <div className="">
         <Carousel arrows infinite={false} autoplay>
           {coverImages.map((image, index) => (
@@ -34,25 +34,25 @@ export default function ExpertiseCard({
           ))}
         </Carousel>
       </div>
-      <div className="w-full h-fit px-4 py-2 space-y-2">
-        <h1 className="text-blackBg lg:text-[16px] md:text-[14px] text-[12px] font-semibold">
+      <div className="w-full h-fit px-4 py-2 space-y-4">
+        <h1 className="text-white lg:text-[16px] md:text-[14px] text-[12px] font-semibold">
           {title}
         </h1>
-        <p className="text-blackBg md:text-[13px] text-[12px] font-light font-roboto">
+        <p className="text-white md:text-[13px] text-[12px] font-light font-roboto">
           {description}
         </p>
         <div className="w-full h-fit flex flex-wrap justify-center gap-2">
           {skills.map((skill, index) => (
             <p
               key={index}
-              className="w-fit h-fit py-1 px-2 text-[12px] font-medium bg-darkblue text-greenblue rounded-full"
+              className="w-fit h-fit py-1 px-2 text-[12px] font-medium bg-blackBg text-greenblue rounded-full"
             >
               {skill}
             </p>
           ))}
         </div>
       </div>
-      <div className="absolute lg:-top-10 top-4 right-4 delay-300 duration-500 group-hover:top-4  group-hover:scale-100">
+      <div className="absolute lg:-top-10 top-4 right-4 delay-300 duration-500 group-hover:top-4 group-hover:scale-100">
         <Button
           link={true}
           text={"More Info"}

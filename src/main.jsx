@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { EntryPage, Home, LandingPage, NotFound } from "./components/pages";
+import { ContactPage, EntryPage, Home, LandingPage, NotFound } from "./components/pages";
+import Contact from "./components/pages/Contact";
+
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -15,13 +17,12 @@ const router = createBrowserRouter([
         element: <LandingPage />,
       },
       {
-        path: "home",
-        element: <Home />,
+        path: "contact",
+        element: <ContactPage />,
       },
     ],
   },
 ]);
-
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
