@@ -52,7 +52,7 @@ export default function ExpertiseCard({
           ))}
         </div>
       </div>
-      <div className="absolute lg:-top-10 top-4 right-4 delay-300 duration-500 group-hover:top-4 group-hover:scale-100">
+      {/* <div className="absolute lg:-top-10 top-4 right-4 delay-300 duration-500 group-hover:top-4 group-hover:scale-100">
         <Button
           link={true}
           text={"More Info"}
@@ -61,7 +61,7 @@ export default function ExpertiseCard({
             "px-4 py-1 bg-darkblue rounded-full text-greenblue border border-greenblue text-[13px] font-medium"
           }
         />
-      </div>
+      </div> */}
     </div>
   );
 }
